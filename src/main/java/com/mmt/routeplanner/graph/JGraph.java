@@ -93,33 +93,36 @@ public class JGraph {
     Connection connection2 = new Connection("vertex1 - vertex2-Bus");
 
     graph.addEdge("vertex1", "vertex2",connection);
-    graph.setEdgeWeight(connection, 1);
+    graph.setEdgeWeight(connection, 2);
     graph.addEdge("vertex1", "vertex2",connection2);
-    graph.setEdgeWeight(connection2, 1);
+    graph.setEdgeWeight(connection2, 5);
 
 
     connection = new Connection("vertex2 - vertex3-Flight");
     connection2 = new Connection("vertex2 - vertex3-Bus");
     graph.addEdge("vertex2", "vertex3",connection);
-    graph.setEdgeWeight(connection, 1);
+    graph.setEdgeWeight(connection, 8);
     graph.addEdge("vertex2", "vertex3",connection2);
-    graph.setEdgeWeight(connection2, 1);
+    graph.setEdgeWeight(connection2, 5);
 
 
     connection = new Connection("vertex1 - vertex3-Flight");
     connection2 = new Connection("vertex1 - vertex3-Bus");
     graph.addEdge("vertex1", "vertex3",connection);
-    graph.setEdgeWeight(connection, 1);
+    graph.setEdgeWeight(connection, 8);
     graph.addEdge("vertex1", "vertex3",connection2);
-    graph.setEdgeWeight(connection2, 1);
+    graph.setEdgeWeight(connection2, 8);
+
+    graph.addEdge("vertex1", "vertex3",connection2);
+    graph.setEdgeWeight(connection2, 7);
 
     connection = new Connection("vertex3 - vertex1-Flight");
     graph.addEdge("vertex3", "vertex1",connection);
-    graph.setEdgeWeight(connection, 1);
+    graph.setEdgeWeight(connection, 9);
 
     KShortestPaths<String, Connection> pathInspector =
         new KShortestPaths<String, Connection>(
-            graph,10,3
+            graph,10
         );
 
 

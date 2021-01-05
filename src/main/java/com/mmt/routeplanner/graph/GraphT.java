@@ -1,10 +1,16 @@
 package com.mmt.routeplanner.graph;
 
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.KShortestPaths;
 import org.jgrapht.graph.DirectedWeightedMultigraph;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 
+/**
+ * This is class is for neo4J like representation of routes.
+ */
 @Component
 public class GraphT {
 
@@ -25,11 +31,15 @@ public class GraphT {
 
   private static KShortestPaths<String, Medium> pathInspector =
       new KShortestPaths<String, Medium>(
-          graph,50,10
+          graph, 50, 10
       );
 
-
-  public static boolean addRoute(String src, String dest, String type, long duration) {
+  /**
+   * Add route with src and destination via type
+   *
+   * @return if new route via type return true else already exist false.
+   */
+  public static boolean addRoute(@NonNull String src, @NonNull String dest, @NonNull String type) {
     String relationShip = String.format(RELATIONSHIP, src, dest, type);
     if (routeMap.containsKey(relationShip)) {
       return false;
@@ -40,6 +50,27 @@ public class GraphT {
     graph.setEdgeWeight(medium, 1);
     return true;
 
+  }
+
+  /**
+   * Find top 50 routes with maximum 10 hopes
+   */
+  public static @NonNull
+  List<GraphPath<String, Medium>> defaultGetPath(@NonNull String src, @NonNull String dest) {
+    return pathInspector.getPaths(src, dest);
+  }
+
+  /**
+   * Find top k routes with maximum z hopes
+   */
+  public static @NonNull
+  List<GraphPath<String, Medium>> findKPathWithMaxZHopes(@NonNull String src, @NonNull String dest,
+      @NonNull int k, @NonNull int z) {
+    KShortestPaths<String, Medium> pathInspector =
+        new KShortestPaths<String, Medium>(
+            graph, k, z
+        );
+    return pathInspector.getPaths(src, dest);
   }
 
 
