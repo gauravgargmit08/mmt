@@ -90,7 +90,7 @@ public class DataGen {
     List<GraphPath<String, Medium>> graphs = GraphT.defaultGetPath("A","D");
     System.out.println("Paths "+ graphs);
 
-    createRoute.listRoutes(graphs);
+    createRoute.searchRoutesCheapest(graphs,RouteUtil.getDateWithoutTimeUsingCalendar(new Date()),"A","D");
 
   }
 
