@@ -3,6 +3,7 @@ package com.mmt.routeplanner.scheduler;
 import com.google.gson.Gson;
 import com.mmt.routeplanner.graph.GraphT;
 import com.mmt.routeplanner.graph.Medium;
+import com.mmt.routeplanner.model.BusEvent;
 import com.mmt.routeplanner.model.FlightEvent;
 import com.mmt.routeplanner.model.SearchResult;
 import com.mmt.routeplanner.service.CreateRoute;
@@ -89,10 +90,32 @@ public class DataGen {
     eventRouter.processEvent(flight);
 
 
-    List<GraphPath<String, Medium>> graphs = GraphT.defaultGetPath("A","D");
+    BusEvent busEvent = new BusEvent();
+    busEvent.setBus_id(UUID.randomUUID().toString());
+    busEvent.setFrom("A");
+    busEvent.setTo("B");
+    busEvent.setFare(BigDecimal.valueOf(5));
+    busEvent.setDate(RouteUtil.getDateWithoutTimeUsingCalendar(new Date()));
+    busEvent.setDuration(240);
+    busEvent.setStartTime("12:00");
+    eventRouter.processEvent(busEvent);
+
+
+    busEvent = new BusEvent();
+    busEvent.setBus_id(UUID.randomUUID().toString());
+    busEvent.setFrom("B");
+    busEvent.setTo("D");
+    busEvent.setFare(BigDecimal.valueOf(1));
+    busEvent.setDate(RouteUtil.getDateWithoutTimeUsingCalendar(new Date()));
+    busEvent.setDuration(720);
+    busEvent.setStartTime("13:00");
+    eventRouter.processEvent(busEvent);
+
+
+    List<GraphPath<String, Medium>> graphs = GraphT.defaultGetPath("B","D");
     System.out.println("Paths "+ graphs);
 
-    SearchResult searchResult = createRoute.searchRoutesCheapest(graphs,RouteUtil.getDateWithoutTimeUsingCalendar(new Date()),"A","D");
+    SearchResult searchResult = createRoute.searchRoutesCheapest(graphs,RouteUtil.getDateWithoutTimeUsingCalendar(new Date()),"B","D");
     Gson gson = new Gson();
     System.out.println(gson.toJson(searchResult));
 

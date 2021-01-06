@@ -19,7 +19,7 @@ public class BusService implements IMediumService {
   public Optional<Bus> findCheapestFlightsBySrcAndByDestAndByDate(String src, String dest,
       Date startDate, Date endDate) {
     List<Bus> flights = busesRepository
-        .findBySourceAndDestinationAndFlightDateBetweenOrderByFareAsc(src, dest,
+        .findBySourceAndDestinationAndStartDateTimeBetweenOrderByFareAsc(src, dest,
             startDate, endDate);
     if (CollectionUtils.isEmpty(flights)) {
       return Optional.empty();
@@ -28,11 +28,12 @@ public class BusService implements IMediumService {
     }
 
   }
+
   @Override
   public Optional<Bus> findBySourceAndDestinationAndByDate(String src, String dest,
       Date startDate, Date endDate) {
     List<Bus> flights = busesRepository
-        .findBySourceAndDestinationAndFlightDateBetweenOrderByDurationAsc(src, dest,
+        .findBySourceAndDestinationAndStartDateTimeBetweenOrderByDurationAsc(src, dest,
             startDate, endDate);
     if (CollectionUtils.isEmpty(flights)) {
       return Optional.empty();

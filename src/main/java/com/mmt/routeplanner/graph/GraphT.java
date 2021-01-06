@@ -17,9 +17,9 @@ public class GraphT {
 
 
   /**
-   * This is will have Possible route with weight as duration. For more scalability we need to use
-   * data modelling of Neo4j. This implementation will more flexibility and performance. Due to time
-   * constraint I am in memory graph based library.
+   * This is will have Possible route. For more scalability we need to use
+   * data modelling of Neo4j which have more 360 view of relationships between from and to ,flexibility and better performance. Due to time
+   * constraint using in-memory graph based library.
    */
   private static DirectedWeightedMultigraph<String, Medium> graph
       = new DirectedWeightedMultigraph(Medium.class);

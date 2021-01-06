@@ -11,6 +11,7 @@ public class Transfer {
 
   private String source;
   private String destination;
+  private String code;
   private Date startDate;
   private Date startDateTime;
   private long duration;
