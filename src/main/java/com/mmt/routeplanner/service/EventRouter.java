@@ -22,13 +22,14 @@ public class EventRouter {
     flight.setDestination(flightEvent.getTo());
     flight.setFare(flightEvent.getFare());
     flight.setFlightDate(flightEvent.getDate());
-    flight.setStartDate(RouteUtil.getDateTime(flightEvent.getDate(),flightEvent.getStartTime()));
-    flight.setEndDate(RouteUtil.addHours(flight.getStartDate(),flightEvent.getDuration()));
+    flight.setStartDateTime(RouteUtil.getDateTime(flightEvent.getDate(),flightEvent.getStartTime()));
+    flight.setEndDate(RouteUtil.addHours(flight.getStartDateTime(),flightEvent.getDuration()));
     flight.setDuration(flightEvent.getDuration());
     flightRepository.save(flight);
+    System.out.println("Saving" + flight.toString());
     GraphT.addRoute(flightEvent.getFrom(),flightEvent.getTo(),"FLIGHT");
-    List<Flight> flights = flightRepository.findAll();
-    System.out.println("flights" + flights.toString());
+    //List<Flight> flights = flightRepository.findAll();
+    //System.out.println("flights" + flights.toString());
 
   }
 

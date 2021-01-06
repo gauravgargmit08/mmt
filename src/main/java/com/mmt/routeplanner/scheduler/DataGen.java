@@ -1,5 +1,6 @@
 package com.mmt.routeplanner.scheduler;
 
+import com.google.gson.Gson;
 import com.mmt.routeplanner.graph.GraphT;
 import com.mmt.routeplanner.graph.Medium;
 import com.mmt.routeplanner.model.FlightEvent;
@@ -36,7 +37,7 @@ public class DataGen {
     flight.setTo("B");
     flight.setFare(BigDecimal.TEN);
     flight.setDate(RouteUtil.getDateWithoutTimeUsingCalendar(new Date()));
-    flight.setDuration(2);
+    flight.setDuration(120);
     flight.setStartTime("12:00");
     flight.setFare(BigDecimal.TEN);
     eventRouter.processEvent(flight);
@@ -48,7 +49,7 @@ public class DataGen {
     flight.setTo("C");
     flight.setStartTime("15:00");
     flight.setFare(BigDecimal.valueOf(20L));
-    flight.setDuration(2);
+    flight.setDuration(120);
     flight.setDate(RouteUtil.getDateWithoutTimeUsingCalendar(new Date()));
     eventRouter.processEvent(flight);
 
@@ -60,7 +61,7 @@ public class DataGen {
     flight.setTo("D");
     flight.setStartTime("18:00");
     flight.setFare(BigDecimal.valueOf(120L));
-    flight.setDuration(2);
+    flight.setDuration(120);
     flight.setDate(RouteUtil.getDateWithoutTimeUsingCalendar(new Date()));
     eventRouter.processEvent(flight);
 
@@ -69,7 +70,7 @@ public class DataGen {
     flight = new FlightEvent();
     flight.setFlight_Id(UUID.randomUUID().toString());
     flight.setTo("D");
-    flight.setDuration(4);
+    flight.setDuration(180);
     flight.setFrom("A");
     flight.setStartTime("18:00");
     flight.setFare(BigDecimal.valueOf(30L));
@@ -83,7 +84,7 @@ public class DataGen {
     flight.setTo("D");
     flight.setStartTime("18:00");
     flight.setFare(BigDecimal.valueOf(25L));
-    flight.setDuration(2);
+    flight.setDuration(120);
     flight.setDate(RouteUtil.getDateWithoutTimeUsingCalendar(new Date()));
     eventRouter.processEvent(flight);
 
@@ -92,6 +93,8 @@ public class DataGen {
     System.out.println("Paths "+ graphs);
 
     SearchResult searchResult = createRoute.searchRoutesCheapest(graphs,RouteUtil.getDateWithoutTimeUsingCalendar(new Date()),"A","D");
+    Gson gson = new Gson();
+    System.out.println(gson.toJson(searchResult));
 
   }
 

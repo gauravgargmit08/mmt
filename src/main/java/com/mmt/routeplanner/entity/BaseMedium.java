@@ -27,7 +27,7 @@ public class BaseMedium {
         ", source='" + source + '\'' +
         ", destination='" + destination + '\'' +
         ", flightDate=" + flightDate +
-        ", startDate=" + startDate +
+        ", startDateTime=" + startDateTime +
         ", duration=" + duration +
         ", fare=" + fare +
         ", startTime='" + startTime + '\'' +
@@ -37,7 +37,7 @@ public class BaseMedium {
 
   private String destination;
   private Date flightDate;
-  private Date startDate;
+  private Date startDateTime;
   private long duration;
   private BigDecimal fare;
   private String startTime;

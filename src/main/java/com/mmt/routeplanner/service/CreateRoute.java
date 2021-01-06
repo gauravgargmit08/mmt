@@ -9,7 +9,6 @@ import com.mmt.routeplanner.model.Transfer;
 import com.mmt.routeplanner.util.RouteUtil;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
@@ -48,14 +47,14 @@ public class CreateRoute {
         String[] relProp = medium.getType().split(RouteUtil.DELIMETER);
         IMediumService mediumService =
             mediumServiceFactory.factory(relProp[2]);
-
+        System.out.println(String.format("Fetching Details From %s ----> %s ----- starteDateTime: %s, EndDateTime: %s",relProp[0], relProp[1], nextDate, endDate));
         //Fetching type basis relationship property from edge
         Optional<? extends BaseMedium> optionalBaseMedium = mediumService.
             findCheapestFlightsBySrcAndByDestAndByDate(relProp[0], relProp[1], nextDate, endDate);
         if (optionalBaseMedium.isPresent()) {
           BaseMedium baseMedium = optionalBaseMedium.get();
           nextDate = baseMedium.getEndDate();
-          // Assuming stoppage should not be more than 2 days for a customer.
+          // Assuming layover should not be more than 1 days for a customer.
           endDate = RouteUtil.addHours(nextDate, 24*60L);
           transfers.add(buildRoute(baseMedium));
           totalFare = totalFare.add(baseMedium.getFare());
@@ -82,7 +81,7 @@ public class CreateRoute {
 
     return Transfer.builder().destination(baseMedium.getDestination())
         .endDate(baseMedium.getEndDate())
-        .fare(baseMedium.getFare()).startDate(baseMedium.getStartDate())
+        .fare(baseMedium.getFare()).startDate(baseMedium.getStartDateTime())
         .source(baseMedium.getSource()).
             startTime(baseMedium.getStartTime()).duration(baseMedium.getDuration()).build();
 
