@@ -39,7 +39,7 @@ public class GraphT {
    *
    * @return if new route via type return true else already exist false.
    */
-  public static boolean addRoute(@NonNull String src, @NonNull String dest, @NonNull String type) {
+  public static synchronized boolean addRoute(@NonNull String src, @NonNull String dest, @NonNull String type) {
     String relationShip = String.format(RELATIONSHIP, src, dest, type);
     if (routeMap.containsKey(relationShip)) {
       return false;

@@ -1,9 +1,13 @@
 package com.mmt.routeplanner.scheduler;
 
 import com.mmt.routeplanner.entity.Flight;
+import com.mmt.routeplanner.model.FlightEvent;
 import com.mmt.routeplanner.repo.FlightRepository;
+import com.mmt.routeplanner.service.EventRouter;
+import com.mmt.routeplanner.util.RouteUtil;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,49 +18,55 @@ import org.springframework.stereotype.Service;
 public class DataGen {
 
   @Autowired
-  private FlightRepository flightRepository;
+  private EventRouter  eventRouter;
 
   @Scheduled(fixedDelay = 1000000000)
   public void generateData(){
 
-    Flight flight = new Flight();
+
+
+    FlightEvent flight = new FlightEvent();
     flight.setFlight_Id(UUID.randomUUID().toString());
-    flight.setDestination("A");
-    flight.setSource("B");
+    flight.setFrom("A");
+    flight.setTo("B");
     flight.setFare(BigDecimal.TEN);
-    flight.setStartDate(LocalDateTime.now().plusDays(1));
+    flight.setDate(RouteUtil.getDateWithoutTimeUsingCalendar(new Date()));
     flight.setDuration(2);
     flight.setStartTime("12:00");
+    flight.setFare(BigDecimal.TEN);
+    eventRouter.processEvent(flight);
 
-    flightRepository.save(flight);
 
-    flight = new Flight();
+    flight = new FlightEvent();
     flight.setFlight_Id(UUID.randomUUID().toString());
-    flight.setDestination("B");
-    flight.setSource("C");
+    flight.setFrom("B");
+    flight.setTo("C");
     flight.setStartTime("15:00");
-    flightRepository.save(flight);
+    flight.setFare(BigDecimal.valueOf(20L));
+    flight.setDuration(2);
+    eventRouter.processEvent(flight);
 
 
-    flight = new Flight();
+
+    flight = new FlightEvent();
     flight.setFlight_Id(UUID.randomUUID().toString());
-    flight.setDestination("C");
-    flight.setSource("D");
+    flight.setFrom("C");
+    flight.setTo("D");
     flight.setStartTime("18:00");
-    flightRepository.save(flight);
+    flight.setFare(BigDecimal.valueOf(120L));
+    flight.setDuration(2);
+    eventRouter.processEvent(flight);
 
 
-    flight = new Flight();
+
+    flight = new FlightEvent();
     flight.setFlight_Id(UUID.randomUUID().toString());
-    flight.setDestination("A");
+    flight.setTo("A");
     flight.setDuration(4);
-    flight.setSource("D");
+    flight.setFrom("D");
     flight.setStartTime("18:00");
-    flightRepository.save(flight);
-
-    List<Flight> flights = flightRepository.findAll();
-    System.out.println("flights" + flights.toString());
-
+    flight.setFare(BigDecimal.valueOf(30L));
+    eventRouter.processEvent(flight);
 
   }
 

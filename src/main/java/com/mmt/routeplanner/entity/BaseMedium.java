@@ -2,6 +2,7 @@ package com.mmt.routeplanner.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Date;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,11 +20,12 @@ public class BaseMedium {
 
   private String source;
   private String destination;
-  private LocalDateTime startDate;
+  private Date flightDate;
+  private Date startDate;
   private long duration;
   private BigDecimal fare;
   private String startTime;
-  private LocalDateTime endDate;
+  private Date endDate;
 
 
 }

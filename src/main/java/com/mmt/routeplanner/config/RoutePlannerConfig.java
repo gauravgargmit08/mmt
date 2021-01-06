@@ -3,7 +3,7 @@ package com.mmt.routeplanner.config;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-@Configuration
+@Configuration()
 @EnableScheduling
 public class RoutePlannerConfig {
 
