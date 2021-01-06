@@ -1,0 +1,46 @@
+package com.mmt.routeplanner.service;
+
+import com.mmt.routeplanner.entity.Flight;
+import com.mmt.routeplanner.repo.FlightRepository;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+
+@Service
+public class FlightService implements IMediumService{
+
+  @Autowired
+  private FlightRepository flightRepository;
+
+  @Override
+  public Optional<Flight> findCheapestFlightsBySrcAndByDestAndByDate(String src, String dest,
+      Date startDate, Date endDate) {
+    List<Flight> flights = flightRepository
+        .findBySourceAndDestinationAndFlightDateBetweenOrderByFareAsc(src, dest,
+            startDate, endDate);
+    if (CollectionUtils.isEmpty(flights)) {
+      return Optional.empty();
+    } else {
+      return Optional.of(flights.get(0));
+    }
+
+  }
+
+  @Override
+  public Optional<Flight> findBySourceAndDestinationAndByDate(String src, String dest,
+      Date startDate, Date endDate) {
+    List<Flight> flights = flightRepository
+        .findBySourceAndDestinationAndFlightDateBetweenOrderByDurationAsc(src, dest,
+            startDate, endDate);
+    if (CollectionUtils.isEmpty(flights)) {
+      return Optional.empty();
+    } else {
+      return Optional.of(flights.get(0));
+    }
+
+  }
+
+}

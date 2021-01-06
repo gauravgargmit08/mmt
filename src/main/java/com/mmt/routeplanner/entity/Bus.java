@@ -7,7 +7,7 @@ import lombok.Data;
 @Entity
 @Table(name = "Buses")
 @Data
-public class Buses extends BaseMedium {
+public class Bus extends BaseMedium {
 
   private String bus_Id;
 
