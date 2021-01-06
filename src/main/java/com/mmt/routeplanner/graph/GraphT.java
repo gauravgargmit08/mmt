@@ -46,6 +46,8 @@ public class GraphT {
     }
 
     Medium medium = new Medium(relationShip);
+    graph.addVertex(src);
+    graph.addVertex(dest);
     graph.addEdge(src, dest, medium);
     graph.setEdgeWeight(medium, 1);
     return true;

@@ -87,6 +87,7 @@ public class JGraph {
     graph.addVertex("vertex1");
     graph.addVertex("vertex2");
     graph.addVertex("vertex3");
+    graph.addVertex("vertex3");
     graph.addVertex("vertex4");
     graph.addVertex("vertex5");
     Connection connection = new Connection("vertex1 - vertex2-Flight");

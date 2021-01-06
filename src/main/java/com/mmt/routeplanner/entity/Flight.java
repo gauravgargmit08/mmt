@@ -11,4 +11,6 @@ public class Flight extends BaseMedium {
 
   private String flight_Id;
 
+
+
 }

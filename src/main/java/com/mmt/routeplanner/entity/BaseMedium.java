@@ -19,6 +19,22 @@ public class BaseMedium {
   private long id;
 
   private String source;
+
+  @Override
+  public String toString() {
+    return "BaseMedium{" +
+        "id=" + id +
+        ", source='" + source + '\'' +
+        ", destination='" + destination + '\'' +
+        ", flightDate=" + flightDate +
+        ", startDate=" + startDate +
+        ", duration=" + duration +
+        ", fare=" + fare +
+        ", startTime='" + startTime + '\'' +
+        ", endDate=" + endDate +
+        '}';
+  }
+
   private String destination;
   private Date flightDate;
   private Date startDate;
