@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FlightRepository extends CrudRepository<Flight,String> {
   List<Flight> findAll();
-  List<Flight> findBySourceAndDestinationAndFlightDateBetweenOrderByFareAsc(String src,String dest, Date startDate,Date endDate);
-  List<Flight> findBySourceAndDestinationAndFlightDateBetweenOrderByDurationAsc(String src,String dest, Date startDate,Date endDate);
+  List<Flight> findBySourceAndDestinationAndStartDateTimeBetweenOrderByFareAsc(String src,String dest, Date startDate,Date endDate);
+  List<Flight> findBySourceAndDestinationAndStartDateTimeBetweenOrderByDurationAsc(String src,String dest, Date startDate,Date endDate);
 
 }
