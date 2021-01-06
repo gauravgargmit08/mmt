@@ -1,18 +1,15 @@
 package com.mmt.routeplanner.scheduler;
 
-import com.mmt.routeplanner.entity.Flight;
 import com.mmt.routeplanner.graph.GraphT;
 import com.mmt.routeplanner.graph.Medium;
 import com.mmt.routeplanner.model.FlightEvent;
-import com.mmt.routeplanner.repo.FlightRepository;
+import com.mmt.routeplanner.service.CreateRoute;
 import com.mmt.routeplanner.service.EventRouter;
 import com.mmt.routeplanner.util.RouteUtil;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-import org.jgrapht.Graph;
 import org.jgrapht.GraphPath;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -23,6 +20,9 @@ public class DataGen {
 
   @Autowired
   private EventRouter  eventRouter;
+
+  @Autowired
+  private CreateRoute createRoute;
 
   @Scheduled(fixedDelay = 1000000000)
   public void generateData(){
@@ -89,6 +89,8 @@ public class DataGen {
 
     List<GraphPath<String, Medium>> graphs = GraphT.defaultGetPath("A","D");
     System.out.println("Paths "+ graphs);
+
+    createRoute.listRoutes(graphs);
 
   }
 

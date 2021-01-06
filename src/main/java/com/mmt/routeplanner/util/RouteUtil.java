@@ -8,6 +8,9 @@ import java.util.Date;
 
 public class RouteUtil {
 
+  public static final String RELATIONSHIP = "%s~#~%s~#~%s";
+  public static final String DELIMETER = "~#~";
+
   public static Date getDateTime(Date date , String time){
     String[] hhmm = time.split(":");
     Calendar c = Calendar.getInstance();

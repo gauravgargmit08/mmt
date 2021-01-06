@@ -1,5 +1,6 @@
 package com.mmt.routeplanner.graph;
 
+import com.mmt.routeplanner.util.RouteUtil;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import org.jgrapht.GraphPath;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class GraphT {
 
-  private static final String RELATIONSHIP = "%s~#~%s~#~%s";
+
   /**
    * This is will have Possible route with weight as duration. For more scalability we need to use
    * data modelling of Neo4j. This implementation will more flexibility and performance. Due to time
@@ -40,7 +41,7 @@ public class GraphT {
    * @return if new route via type return true else already exist false.
    */
   public static synchronized boolean addRoute(@NonNull String src, @NonNull String dest, @NonNull String type) {
-    String relationShip = String.format(RELATIONSHIP, src, dest, type);
+    String relationShip = String.format(RouteUtil.RELATIONSHIP, src, dest, type);
     if (routeMap.containsKey(relationShip)) {
       return false;
     }
