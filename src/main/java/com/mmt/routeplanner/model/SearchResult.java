@@ -12,6 +12,5 @@ public class SearchResult {
   private String destination;
   private String source;
   private Date searchDate;
-  private BigDecimal totalFare;
-  private List<Route> routes;
+  private List<Routes> routes;
 }

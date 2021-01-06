@@ -3,6 +3,7 @@ package com.mmt.routeplanner.scheduler;
 import com.mmt.routeplanner.graph.GraphT;
 import com.mmt.routeplanner.graph.Medium;
 import com.mmt.routeplanner.model.FlightEvent;
+import com.mmt.routeplanner.model.SearchResult;
 import com.mmt.routeplanner.service.CreateRoute;
 import com.mmt.routeplanner.service.EventRouter;
 import com.mmt.routeplanner.util.RouteUtil;
@@ -90,7 +91,7 @@ public class DataGen {
     List<GraphPath<String, Medium>> graphs = GraphT.defaultGetPath("A","D");
     System.out.println("Paths "+ graphs);
 
-    createRoute.searchRoutesCheapest(graphs,RouteUtil.getDateWithoutTimeUsingCalendar(new Date()),"A","D");
+    SearchResult searchResult = createRoute.searchRoutesCheapest(graphs,RouteUtil.getDateWithoutTimeUsingCalendar(new Date()),"A","D");
 
   }
 

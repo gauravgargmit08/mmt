@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Route {
+public class Transfer {
 
   private String source;
   private String destination;
