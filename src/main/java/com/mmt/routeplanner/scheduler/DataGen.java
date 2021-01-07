@@ -112,10 +112,10 @@ public class DataGen {
     eventRouter.processEvent(busEvent);
 
 
-    List<GraphPath<String, Medium>> graphs = GraphT.defaultGetPath("B","D");
+    List<GraphPath<String, Medium>> graphs = GraphT.defaultGetPath("A","D");
     System.out.println("Paths "+ graphs);
 
-    SearchResult searchResult = createRoute.searchRoutes(graphs,RouteUtil.getDateWithoutTimeUsingCalendar(new Date()),"B","D",RouteUtil.SHORTEST);
+    SearchResult searchResult = createRoute.searchRoutes(graphs,RouteUtil.getDateWithoutTimeUsingCalendar(new Date()),"A","D",RouteUtil.SHORTEST);
     Gson gson = new Gson();
     System.out.println(gson.toJson(searchResult));
 

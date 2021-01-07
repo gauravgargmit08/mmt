@@ -32,7 +32,7 @@ public class CreateRoute {
   public SearchResult searchRoutes(List<GraphPath<String, Medium>> graphs, Date startDate,
       String src, String dest, String routeSort) {
     SearchResult searchResult = SearchResult.builder().destination(dest).source(src)
-        .searchDate(startDate).build();
+        .searchDate(startDate).routeSort(routeSort).build();
     List<Routes> routesList = new ArrayList<>();
     //Traverse each path to check of flights or buses available
     for (GraphPath<String, Medium> stringMediumGraphPath : graphs) {
