@@ -94,7 +94,7 @@ public class SearchRoute {
       return mediumService.
           findCheapestBySrcAndByDestAndByDate(relProp[0], relProp[1], startDate, endDate);
     }
-    if (RouteUtil.SHORTEST.equalsIgnoreCase(routeSort)) {
+    else if (RouteUtil.SHORTEST.equalsIgnoreCase(routeSort)) {
       return mediumService.
           findShortestBySourceAndDestinationAndByDate(relProp[0], relProp[1], startDate, endDate);
     } else {
@@ -108,7 +108,7 @@ public class SearchRoute {
       routesList.sort(Comparator.comparing(Routes::getTotalFare));
 
     }
-    if (RouteUtil.SHORTEST.equalsIgnoreCase(routeSort)) {
+    else if (RouteUtil.SHORTEST.equalsIgnoreCase(routeSort)) {
       routesList.sort(Comparator.comparing(Routes::getTotalDuration));
 
     } else {
