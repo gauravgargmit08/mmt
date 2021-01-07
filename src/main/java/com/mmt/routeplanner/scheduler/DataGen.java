@@ -111,12 +111,15 @@ public class DataGen {
     busEvent.setStartTime("13:00");
     eventRouter.processEvent(busEvent);
 
+    Gson gson = new Gson();
+    System.out.println(gson.toJson(busEvent));
+    System.out.println(gson.toJson(flight));
+
 
     List<GraphPath<String, Medium>> graphs = GraphT.defaultGetPath("A","D");
     System.out.println("Paths "+ graphs);
 
     SearchResult searchResult = createRoute.searchRoutes(graphs,RouteUtil.getDateWithoutTimeUsingCalendar(new Date()),"A","D",RouteUtil.SHORTEST);
-    Gson gson = new Gson();
     System.out.println(gson.toJson(searchResult));
 
   }

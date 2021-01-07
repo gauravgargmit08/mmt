@@ -1,5 +1,7 @@
 package com.mmt.routeplanner.util;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
@@ -12,6 +14,28 @@ public class RouteUtil {
   public static final String DELIMETER = "~#~";
   public static final String CHEAPEST = "CHEAPEST";
   public static final String SHORTEST = "SHORTEST";
+
+  /**
+   * The constant PARTITION_ID.
+   */
+  public static final String PARTITION_ID = "kafka_receivedPartitionId";
+  /**
+   * The constant KEY.
+   */
+  public static final String KEY = "kafka_receivedMessageKey";
+  /**
+   * The constant TOPIC.
+   */
+  public static final String TOPIC = "kafka_receivedTopic";
+  /**
+   * The constant OFFSET.
+   */
+  public static final String OFFSET = "kafka_offset";
+
+  /**
+   * The constant KAFKA_KEY.
+   */
+  public static final String KAFKA_KEY = "Kafka";
 
   public static Date getDateTime(Date date , String time){
     String[] hhmm = time.split(":");
@@ -66,5 +90,26 @@ public class RouteUtil {
 
   private static Date localDateTimeToDate(LocalDateTime localDateTime) {
     return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+  }
+
+  /**
+   * This method will take Json string and return Entity object.
+   *
+   * @param <T>          the generic type
+   * @param jsonTxt      the json txt
+   * @param resultClass  the result class
+   * @param objectMapper the object mapper
+   *
+   * @return the t
+   *
+   * @throws IOException Signals that an I/O exception has occurred.
+   */
+  public static <T> T jsonToEntity(String jsonTxt, Class<T> resultClass, ObjectMapper objectMapper)
+      throws IOException {
+    T resultObject = objectMapper.readValue(jsonTxt, resultClass);
+    if (resultObject == null) {
+      throw new IllegalArgumentException("null resultObject after JSON to Object conversion");
+    }
+    return resultObject;
   }
 }
