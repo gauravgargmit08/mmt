@@ -70,6 +70,9 @@ public class GraphT {
   public static @NonNull
   List<GraphPath<String, Medium>> findKPathWithMaxZHopes(@NonNull String src, @NonNull String dest,
       @NonNull int k, @NonNull int z) {
+    if(CollectionUtils.isEmpty(graph.vertexSet()))
+      throw new IllegalStateException("Route not Found. No Routes exists in the System. Please constact admininstrator");
+    
     KShortestPaths<String, Medium> pathInspector =
         new KShortestPaths<String, Medium>(
             graph, k, z

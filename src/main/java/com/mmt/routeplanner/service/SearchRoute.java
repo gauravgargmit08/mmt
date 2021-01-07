@@ -81,6 +81,7 @@ public class SearchRoute {
         routesList.add(routes);
       }
     }
+    //Sort them for the results
     sort(routeSort,routesList);
     searchResult.setRoutes(routesList);
     return searchResult;
