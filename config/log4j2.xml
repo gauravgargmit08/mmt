@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN" monitorInterval="30">
-<Properties>
-    <Property name="LOG_PATTERN" value="%d [%thread] [%-5level] [%c{1.}] - %M() | %L | Content-Id:%X{CID} | - %custLayConv %n" />
-    <Property name="LOG_PATTERN_KIBANA" value="%d [%thread] [%-5level] [%c{1.}] %custLayConv %n" />
+<Configuration status="WARN" monitorInterval="30" packages="com.airtelbank"
+  name="LogMaskingConverter">  <Properties>
+    <Property name="LOG_PATTERN" value="%d [%thread] [%-5level] [%c{1.}] - %M() | %L | Content-Id:%X{CID} | - %msg%n" />
     <Property name="LOG_DIR" value="logs" />
     <Property name="SYSTEM_FILE" value="route-planner_app.log" />
 </Properties>
-<Appenders>
+    <Appenders>
 
-    <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
-        <PatternLayout pattern="${LOG_PATTERN}" />
-    </Console>
-    <Async name="Async">
-        <AppenderRef ref="FileAppender" />
-    </Async>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${LOG_PATTERN}" />
+        </Console>
+        <Async name="Async">
+            <AppenderRef ref="FileAppender" />
+        </Async>
 
-    <RollingFile name="FileAppender"
-                 fileName="${LOG_DIR}/${SYSTEM_FILE}"
-                 filePattern="${LOG_DIR}/${SYSTEM_FILE}-%d{yyyy-MM-dd}-%i.log">
-        <PatternLayout>
-            <Pattern>${LOG_PATTERN}</Pattern>
-        </PatternLayout>
-        <Policies>
-            <SizeBasedTriggeringPolicy size="50MB" />
-        </Policies>
-        <DefaultRolloverStrategy max="100" />
-    </RollingFile>
+        <RollingFile name="FileAppender"
+          fileName="${LOG_DIR}/${SYSTEM_FILE}"
+          filePattern="${LOG_DIR}/${SYSTEM_FILE}-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout>
+                <Pattern>${LOG_PATTERN}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="50MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="100" />
+        </RollingFile>
 
-</Appenders>
+    </Appenders>
 
-<Loggers>
+    <Loggers>
 
-    <Logger name="com.mmt.routeplanner" level="debug" additivity="false">
-        <AppenderRef ref="ConsoleAppender" />
-        <AppenderRef ref="Async" />
-    </Logger>
+        <Logger name="com.mmt.routeplanner" level="debug" additivity="false">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="Async" />
+        </Logger>
 
-    <Root level="info">
-        <AppenderRef ref="ConsoleAppender" />
-    </Root>
-</Loggers>
+
+        <Root level="info">
+            <AppenderRef ref="ConsoleAppender" />
+        </Root>
+    </Loggers>
 </Configuration>
