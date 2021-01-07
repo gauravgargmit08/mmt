@@ -11,7 +11,7 @@ public class FlightEvent {
 
   private String from;
   private String to;
-  @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss", timezone="IST")
+  @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone="IST")
   private Date date;
   private long duration;
   private BigDecimal fare;

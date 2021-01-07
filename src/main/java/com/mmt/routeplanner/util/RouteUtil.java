@@ -57,9 +57,9 @@ public class RouteUtil {
   }
 
 
-  public static void main(String[] args) {
-    System.out.println(addHours(new Date(),5l));
-  }
+//  public static void main(String[] args) {
+//   log.info(addHours(new Date(),5l));
+//  }
 
   public static Date getDateWithoutTimeUsingCalendar(Date date) {
     Calendar calendar = Calendar.getInstance();

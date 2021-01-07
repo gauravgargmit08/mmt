@@ -15,11 +15,13 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import lombok.extern.slf4j.Slf4j;
 import org.jgrapht.GraphPath;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class CreateRoute {
 
   @Autowired
@@ -44,13 +46,13 @@ public class CreateRoute {
       Date endDate = RouteUtil.atEndOfDay(startDate);
       boolean routeFound = Boolean.TRUE;
       List<Medium> graphWalk = stringMediumGraphPath.getEdgeList();
-      System.out.println(graphWalk.toString());
+     log.info("graphWalk: {}",graphWalk.toString());
 
       for (Medium medium : graphWalk) {
         String[] relProp = medium.getType().split(RouteUtil.DELIMETER);
         IMediumService mediumService =
             mediumServiceFactory.factory(relProp[2]);
-        System.out.println(String
+       log.info(String
             .format("Fetching Details From %s ----> %s ----- starteDateTime: %s, EndDateTime: %s",
                 relProp[0], relProp[1], nextDate, endDate));
 

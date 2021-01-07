@@ -23,7 +23,7 @@ public class Medium extends DefaultWeightedEdge{
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Connection that = (Connection) o;
+    Medium that = (Medium) o;
     return Objects.equals(type, that.type);
   }
 

@@ -13,12 +13,16 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import lombok.extern.slf4j.Slf4j;
 import org.jgrapht.GraphPath;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
+@ConditionalOnProperty(value = "scheduler.enable", havingValue = "true", matchIfMissing = true)
+@Slf4j
 public class DataGen {
 
   @Autowired
@@ -112,15 +116,15 @@ public class DataGen {
     eventRouter.processEvent(busEvent);
 
     Gson gson = new Gson();
-    System.out.println(gson.toJson(busEvent));
-    System.out.println(gson.toJson(flight));
+   log.info("json busEvent :{}",gson.toJson(busEvent));
+    log.info("json flight :{}",gson.toJson(flight));
 
 
     List<GraphPath<String, Medium>> graphs = GraphT.defaultGetPath("A","D");
-    System.out.println("Paths "+ graphs);
+   log.info("Paths "+ graphs);
 
     SearchResult searchResult = createRoute.searchRoutes(graphs,RouteUtil.getDateWithoutTimeUsingCalendar(new Date()),"A","D",RouteUtil.SHORTEST);
-    System.out.println(gson.toJson(searchResult));
+   log.info(gson.toJson(searchResult));
 
   }
 

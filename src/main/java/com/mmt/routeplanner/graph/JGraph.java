@@ -69,7 +69,7 @@ public class JGraph {
 
 
 //    GraphPath<Integer, DefaultEdge> path2 = DijkstraShortestPath.findPathBetween(graph2, 7, 2);
-//    System.out.println(path2);
+//   log.info(path2);
 //
 //    KShortestPaths<String, DefaultEdge> pathInspector =
 //        new KShortestPaths<String, DefaultEdge>(
@@ -185,11 +185,12 @@ public class JGraph {
     }
 
     GraphPath<String, Connection> path = DijkstraShortestPath.findPathBetween(graph, "vertex1", "vertex3");
-    System.out.println(path.toString()+path.getWeight());
+    System.out
+        .println(path.toString()+path.getWeight());
 
     /*AllDirectedPaths<String, DefaultWeightedEdge> allDirectedPaths = new AllDirectedPaths(graph);
     List<GraphPath<String, DefaultWeightedEdge>>  graphPaths =  allDirectedPaths.getAllPaths("vertex1","vertex3",true, Integer.MAX_VALUE);
-    graphPaths.forEach(stringDefaultWeightedEdgeGraphPath ->     System.out.println(path.toString()+path.getWeight()));
+    graphPaths.forEach(stringDefaultWeightedEdgeGraphPath ->    log.info(path.toString()+path.getWeight()));
 */
   }
 

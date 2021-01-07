@@ -9,10 +9,12 @@ import com.mmt.routeplanner.repo.BusesRepository;
 import com.mmt.routeplanner.repo.FlightRepository;
 import com.mmt.routeplanner.util.MediumType;
 import com.mmt.routeplanner.util.RouteUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class EventRouter {
 
   @Autowired
@@ -31,8 +33,10 @@ public class EventRouter {
     flight.setStartDateTime(RouteUtil.getDateTime(flightEvent.getDate(),flightEvent.getStartTime()));
     flight.setEndDate(RouteUtil.addHours(flight.getStartDateTime(),flightEvent.getDuration()));
     flight.setDuration(flightEvent.getDuration());
+    flight.setStartTime(flightEvent.getStartTime());
+
     flightRepository.save(flight);
-    System.out.println("Saving" + flight.toString());
+    log.info("Saving flight: {}" , flight.toString());
     GraphT.addRoute(flightEvent.getFrom(),flightEvent.getTo(), MediumType.MEDIUM_FLIGHT);
   }
 
@@ -46,8 +50,9 @@ public class EventRouter {
     bus.setStartDateTime(RouteUtil.getDateTime(busEvent.getDate(),busEvent.getStartTime()));
     bus.setEndDate(RouteUtil.addHours(bus.getStartDateTime(),busEvent.getDuration()));
     bus.setDuration(busEvent.getDuration());
+    bus.setStartTime(busEvent.getStartTime());
     busesRepository.save(bus);
-    System.out.println("Saving" + bus.toString());
+    log.info("Saving bus: {}" , bus.toString());
     GraphT.addRoute(busEvent.getFrom(),busEvent.getTo(),MediumType.MEDIUM_BUS);
   }
 

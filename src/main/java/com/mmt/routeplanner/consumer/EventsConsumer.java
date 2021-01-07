@@ -39,7 +39,7 @@ public class EventsConsumer {
 	@KafkaListener(topics = "${kafka.bus.event-topic}", containerFactory = "kafkaListenerTxnContainerFactoryBus",clientIdPrefix = "${kafka.bus.event-topic}")
 	public void bus(@Payload String payload, @Headers MessageHeaders messageHeaders, Acknowledgment acknowledgment) {
 		try {
-
+			log.info("Payload Received: {}",payload);
 			BusEvent busEvent = RouteUtil.jsonToEntity(payload,BusEvent.class,objectMapper);
 			eventRouter.processEvent(busEvent);
 		} catch (Exception ex) {
@@ -57,7 +57,7 @@ public class EventsConsumer {
 	@KafkaListener(topics = "${kafka.flight.event-topic}", containerFactory = "kafkaListenerTxnContainerFactoryFlight",clientIdPrefix = "${kafka.flight.event-topic}")
 	public void flight(@Payload String payload, @Headers MessageHeaders messageHeaders, Acknowledgment acknowledgment) {
 		try {
-
+			log.info("Payload Received: {}",payload);
 			FlightEvent flightEvent = RouteUtil.jsonToEntity(payload,FlightEvent.class,objectMapper);
 			eventRouter.processEvent(flightEvent);
 		} catch (Exception ex) {
