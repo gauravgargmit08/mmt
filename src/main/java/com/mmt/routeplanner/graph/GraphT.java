@@ -1,10 +1,19 @@
 package com.mmt.routeplanner.graph;
 
 import com.mmt.routeplanner.util.RouteUtil;
+import com.mxgraph.layout.mxCircleLayout;
+import com.mxgraph.layout.mxIGraphLayout;
+import com.mxgraph.util.mxCellRenderer;
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import javax.imageio.ImageIO;
 import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.KShortestPaths;
+import org.jgrapht.ext.JGraphXAdapter;
 import org.jgrapht.graph.DirectedWeightedMultigraph;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
@@ -25,8 +34,7 @@ public class GraphT {
   private static DirectedWeightedMultigraph<String, Medium> graph
       = new DirectedWeightedMultigraph(Medium.class);
   /**
-   * Map to keep track of added route in routeGraph. If already added with same type like Flight no
-   * need add again.
+   * Map to keep track of added route in routeGraph. If already added with same type like Flight no need to add again.
    */
   private static ConcurrentHashMap<String, Integer> routeMap = new ConcurrentHashMap();
 
