@@ -1,8 +1,8 @@
 # MMT Route Planner
 
 ## Pointers
-- Layover should not be more than 1 days for a customer.
-- Program is searching top 50 routes over maximum of 10 hopes in the route.
+- Layover between two flights or Bus should not be more than 1 days for a customer for his/her convenience .
+- Program is searching top 50 routes over maximum of 10 hopes in the routes graph.
 - It uses **JGRAPHT** for storing routes of flight and buses. Medium of travel like Bus and Flight is used as releationship property.Database like Neo4J graph based is better candidate for this use case. 
   Data modelling of Neo4j which have more 360 view of relationships between from and to ,flexibility and better performance. Due to time constraint using in-memory graph based library.
 - Program is using ConcurrentHashMap to keep track of added route in routeGraph. 
