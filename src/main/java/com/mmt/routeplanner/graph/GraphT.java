@@ -8,6 +8,7 @@ import org.jgrapht.alg.shortestpath.KShortestPaths;
 import org.jgrapht.graph.DirectedWeightedMultigraph;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 /**
  * This is class is for neo4J like representation of routes.
@@ -28,12 +29,6 @@ public class GraphT {
    * need add again.
    */
   private static ConcurrentHashMap<String, Integer> routeMap = new ConcurrentHashMap();
-
-
-  private static KShortestPaths<String, Medium> pathInspector =
-      new KShortestPaths<String, Medium>(
-          graph, 50, 10
-      );
 
   /**
    * Add route with src and destination via type
@@ -60,6 +55,12 @@ public class GraphT {
    */
   public static @NonNull
   List<GraphPath<String, Medium>> defaultGetPath(@NonNull String src, @NonNull String dest) {
+    if(CollectionUtils.isEmpty(graph.vertexSet()))
+      throw new IllegalStateException("Route not Found. No Routes exists in the System. Please constact admininstrator");
+    KShortestPaths<String, Medium> pathInspector =
+        new KShortestPaths<String, Medium>(
+            graph, 50, 10
+        );
     return pathInspector.getPaths(src, dest);
   }
 

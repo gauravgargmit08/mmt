@@ -6,7 +6,7 @@ import com.mmt.routeplanner.graph.Medium;
 import com.mmt.routeplanner.model.BusEvent;
 import com.mmt.routeplanner.model.FlightEvent;
 import com.mmt.routeplanner.model.SearchResult;
-import com.mmt.routeplanner.service.CreateRoute;
+import com.mmt.routeplanner.service.SearchRoute;
 import com.mmt.routeplanner.service.EventRouter;
 import com.mmt.routeplanner.util.RouteUtil;
 import java.math.BigDecimal;
@@ -29,7 +29,7 @@ public class DataGen {
   private EventRouter  eventRouter;
 
   @Autowired
-  private CreateRoute createRoute;
+  private SearchRoute searchRoute;
 
   @Scheduled(fixedDelay = 1000000000)
   public void generateData(){
@@ -123,7 +123,8 @@ public class DataGen {
     List<GraphPath<String, Medium>> graphs = GraphT.defaultGetPath("A","D");
    log.info("Paths "+ graphs);
 
-    SearchResult searchResult = createRoute.searchRoutes(graphs,RouteUtil.getDateWithoutTimeUsingCalendar(new Date()),"A","D",RouteUtil.SHORTEST);
+    SearchResult searchResult = searchRoute
+        .searchRoutes(graphs,RouteUtil.getDateWithoutTimeUsingCalendar(new Date()),"A","D",RouteUtil.SHORTEST);
    log.info(gson.toJson(searchResult));
 
   }
