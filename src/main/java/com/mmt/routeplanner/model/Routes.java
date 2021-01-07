@@ -9,5 +9,6 @@ import lombok.Data;
 @Builder
 public class Routes {
   private BigDecimal totalFare;
+  private long totalDuration;
   private List<Transfer> transfers;
 }

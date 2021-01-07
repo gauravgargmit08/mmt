@@ -16,7 +16,7 @@ public class BusService implements IMediumService {
   private BusesRepository busesRepository;
 
   @Override
-  public Optional<Bus> findCheapestFlightsBySrcAndByDestAndByDate(String src, String dest,
+  public Optional<Bus> findCheapestBySrcAndByDestAndByDate(String src, String dest,
       Date startDate, Date endDate) {
     List<Bus> flights = busesRepository
         .findBySourceAndDestinationAndStartDateTimeBetweenOrderByFareAsc(src, dest,
@@ -30,7 +30,7 @@ public class BusService implements IMediumService {
   }
 
   @Override
-  public Optional<Bus> findBySourceAndDestinationAndByDate(String src, String dest,
+  public Optional<Bus> findShortestBySourceAndDestinationAndByDate(String src, String dest,
       Date startDate, Date endDate) {
     List<Bus> flights = busesRepository
         .findBySourceAndDestinationAndStartDateTimeBetweenOrderByDurationAsc(src, dest,

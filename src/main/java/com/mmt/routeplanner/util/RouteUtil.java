@@ -10,6 +10,8 @@ public class RouteUtil {
 
   public static final String RELATIONSHIP = "%s~#~%s~#~%s";
   public static final String DELIMETER = "~#~";
+  public static final String CHEAPEST = "CHEAPEST";
+  public static final String SHORTEST = "SHORTEST";
 
   public static Date getDateTime(Date date , String time){
     String[] hhmm = time.split(":");

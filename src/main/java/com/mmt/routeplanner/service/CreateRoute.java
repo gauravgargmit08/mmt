@@ -28,20 +28,21 @@ public class CreateRoute {
   @Autowired
   private MediumServiceFactory mediumServiceFactory;
 
-  public SearchResult searchRoutesCheapest(List<GraphPath<String, Medium>> graphs, Date startDate,
-      String src, String dest) {
+
+  public SearchResult searchRoutes(List<GraphPath<String, Medium>> graphs, Date startDate,
+      String src, String dest, String routeSort) {
     SearchResult searchResult = SearchResult.builder().destination(dest).source(src)
         .searchDate(startDate).build();
     List<Routes> routesList = new ArrayList<>();
     //Traverse each path to check of flights or buses available
     for (GraphPath<String, Medium> stringMediumGraphPath : graphs) {
       BigDecimal totalFare = BigDecimal.ZERO;
+      long duration = 0;
       List<Transfer> transfers = new ArrayList<>();
       Routes routes = Routes.builder().build();
       Date nextDate = RouteUtil.atStartOfDay(startDate);
       Date endDate = RouteUtil.atEndOfDay(startDate);
       boolean routeFound = Boolean.TRUE;
-
       List<Medium> graphWalk = stringMediumGraphPath.getEdgeList();
       System.out.println(graphWalk.toString());
 
@@ -52,9 +53,11 @@ public class CreateRoute {
         System.out.println(String
             .format("Fetching Details From %s ----> %s ----- starteDateTime: %s, EndDateTime: %s",
                 relProp[0], relProp[1], nextDate, endDate));
+
         //Fetching type basis relationship property from edge
-        Optional<? extends BaseMedium> optionalBaseMedium = mediumService.
-            findCheapestFlightsBySrcAndByDestAndByDate(relProp[0], relProp[1], nextDate, endDate);
+        Optional<? extends BaseMedium> optionalBaseMedium = find(mediumService, relProp, nextDate,
+            endDate, routeSort);
+
         if (optionalBaseMedium.isPresent()) {
           BaseMedium baseMedium = optionalBaseMedium.get();
           nextDate = baseMedium.getEndDate();
@@ -62,6 +65,7 @@ public class CreateRoute {
           endDate = RouteUtil.addHours(nextDate, 24 * 60L);
           transfers.add(buildRoute(baseMedium, relProp[2]));
           totalFare = totalFare.add(baseMedium.getFare());
+          duration += baseMedium.getDuration();
         } else {
           //If nothing is available then possible path will be skipped.
           routeFound = Boolean.FALSE;
@@ -71,15 +75,45 @@ public class CreateRoute {
       if (routeFound) {
         routes.setTransfers(transfers);
         routes.setTotalFare(totalFare);
+        routes.setTotalDuration(duration);
         routesList.add(routes);
       }
     }
-    routesList.sort(Comparator.comparing(Routes::getTotalFare));
+    sort(routeSort,routesList);
     searchResult.setRoutes(routesList);
     return searchResult;
+  }
+
+
+  private Optional<? extends BaseMedium> find(IMediumService mediumService, String[] relProp,
+      Date startDate, Date endDate, String routeSort) {
+    if (RouteUtil.CHEAPEST.equalsIgnoreCase(routeSort)) {
+      return mediumService.
+          findCheapestBySrcAndByDestAndByDate(relProp[0], relProp[1], startDate, endDate);
+    }
+    if (RouteUtil.SHORTEST.equalsIgnoreCase(routeSort)) {
+      return mediumService.
+          findShortestBySourceAndDestinationAndByDate(relProp[0], relProp[1], startDate, endDate);
+    } else {
+      throw new IllegalArgumentException("Not supported route Criteria");
+    }
 
   }
 
+  private void sort(String routeSort, List<Routes> routesList) {
+    if (RouteUtil.CHEAPEST.equalsIgnoreCase(routeSort)) {
+      routesList.sort(Comparator.comparing(Routes::getTotalFare));
+
+    }
+    if (RouteUtil.SHORTEST.equalsIgnoreCase(routeSort)) {
+      routesList.sort(Comparator.comparing(Routes::getTotalDuration));
+
+    } else {
+      throw new IllegalArgumentException("Not supported route Criteria");
+    }
+
+
+  }
 
   private Transfer buildRoute(BaseMedium baseMedium, String type) {
     String code = null;

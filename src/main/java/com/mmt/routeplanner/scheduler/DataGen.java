@@ -115,7 +115,7 @@ public class DataGen {
     List<GraphPath<String, Medium>> graphs = GraphT.defaultGetPath("B","D");
     System.out.println("Paths "+ graphs);
 
-    SearchResult searchResult = createRoute.searchRoutesCheapest(graphs,RouteUtil.getDateWithoutTimeUsingCalendar(new Date()),"B","D");
+    SearchResult searchResult = createRoute.searchRoutes(graphs,RouteUtil.getDateWithoutTimeUsingCalendar(new Date()),"B","D",RouteUtil.SHORTEST);
     Gson gson = new Gson();
     System.out.println(gson.toJson(searchResult));
 
