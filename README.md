@@ -319,5 +319,19 @@
     }
   ]
 }
-
 ```
+# Configuring Route Planner
+
+##       Prerequisite to run
+           1. JDK - 8
+##        Build instructions
+	git clone https://github.com/gauravgargmit08/routeplanner.git
+	cd routeplanner/
+	git checkout master
+	mvn clean install
+	cd target
+##         Run application
+    nohup java -jar routeplanner 1.0-SNAPSHOT.jar
+
+
+
