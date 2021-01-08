@@ -9,7 +9,7 @@
   If already added with same type like Flight no need to add again.We can use distributed Cache like Redis or Aerospike for better performance and features.
 - Two kafka topic is being polled for the consumption of events mentioned in the file. These events will be sink into store and in parallel it will also create route graph.
  We can create separate pipeline for the operations
-- Program is using in-memory H2 DB for Development. We should use Document based Db like Elastic or MongoDb for scalability and performance or even Oracle could also do the trick.
+- Program is using in-memory H2 DB for Development. We should use Document based Db like Elastic or MongoDb for scalability and performance.
 - It returns the List in ascending order of cheapest and shortest route.
 - Send Kafka Payload in same format only as validations are not in place in **MVP**.
 - Test cases to be covered in the later stage.

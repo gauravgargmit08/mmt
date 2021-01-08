@@ -1,5 +1,6 @@
 package com.mmt.routeplanner.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -16,11 +17,14 @@ public class Transfer {
   private String source;
   @ApiModelProperty(name = "Code for the Medium ", value = "Flight Id or Bus Id",required = true,example = "Randon string")
   private String code;
+  @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone="IST")
   private Date startDate;
+  @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss", timezone="IST")
   private Date startDateTime;
   private long duration;
   private BigDecimal fare;
   private String startTime;
+  @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss", timezone="IST")
   private Date endDate;
   private String type;
   private String mediumId;
