@@ -1,6 +1,7 @@
 # MMT Route Planner
 
 ## Pointers
+- RoutePlanner is a Spring Boot Application with Endpoints for searching or adding Bus and Flight into Database.
 - Assuming Layover between two flights or Bus should not be more than 1 days for customer convenience .
 - Program is searching top 50 routes over maximum of 10 hopes in the routes graph.
   - We can create dynamic config as per business and technical feasibility.
