@@ -56,15 +56,14 @@
           {
             "source": "A",
             "destination": "D",
-            "code": "4361a2d3-786a-4839-938f-7bc5c588a822",
-            "startDate": "2021-01-08T12:30:00.000+0000",
-            "startDateTime": null,
+            "code": "6414a249-7f1f-46ce-8a1c-39384a21fa94",
+            "startDate": "2021-01-08",
+            "startDateTime": "2021-01-08 18:00:00",
+            "endDateTime": "2021-01-08 21:00:00",
             "duration": 180,
             "fare": 30,
             "startTime": "18:00",
-            "endDate": "2021-01-08T15:30:00.000+0000",
-            "type": "FLIGHT",
-            "mediumId": null
+            "type": "FLIGHT"
           }
         ]
       },
@@ -75,28 +74,26 @@
           {
             "source": "A",
             "destination": "B",
-            "code": "a86e30b2-afe8-4a66-902c-87e1a95f11d9",
-            "startDate": "2021-01-08T06:30:00.000+0000",
-            "startDateTime": null,
+            "code": "bd755b5f-f59a-4d71-8fe3-37d987aa3099",
+            "startDate": "2021-01-08",
+            "startDateTime": "2021-01-08 12:00:00",
+            "endDateTime": "2021-01-08 16:00:00",
             "duration": 240,
             "fare": 5,
             "startTime": "12:00",
-            "endDate": "2021-01-08T10:30:00.000+0000",
-            "type": "BUS",
-            "mediumId": null
+            "type": "BUS"
           },
           {
             "source": "B",
             "destination": "D",
-            "code": "73633865-cdcd-4e7f-be03-55d48df14e63",
-            "startDate": "2021-01-08T12:30:00.000+0000",
-            "startDateTime": null,
+            "code": "72f6a63e-f639-49c5-96fd-05c23a7a61e3",
+            "startDate": "2021-01-08",
+            "startDateTime": "2021-01-08 18:00:00",
+            "endDateTime": "2021-01-08 20:00:00",
             "duration": 120,
             "fare": 25,
             "startTime": "18:00",
-            "endDate": "2021-01-08T14:30:00.000+0000",
-            "type": "FLIGHT",
-            "mediumId": null
+            "type": "FLIGHT"
           }
         ]
       },
@@ -107,28 +104,26 @@
           {
             "source": "A",
             "destination": "B",
-            "code": "4c65f863-f58a-45e8-a4c4-ec087b9a243a",
-            "startDate": "2021-01-08T06:30:00.000+0000",
-            "startDateTime": null,
+            "code": "268b059d-fff7-443d-a628-4b2c8499de57",
+            "startDate": "2021-01-08",
+            "startDateTime": "2021-01-08 12:00:00",
+            "endDateTime": "2021-01-08 14:00:00",
             "duration": 120,
             "fare": 10,
             "startTime": "12:00",
-            "endDate": "2021-01-08T08:30:00.000+0000",
-            "type": "FLIGHT",
-            "mediumId": null
+            "type": "FLIGHT"
           },
           {
             "source": "B",
             "destination": "D",
-            "code": "73633865-cdcd-4e7f-be03-55d48df14e63",
-            "startDate": "2021-01-08T12:30:00.000+0000",
-            "startDateTime": null,
+            "code": "72f6a63e-f639-49c5-96fd-05c23a7a61e3",
+            "startDate": "2021-01-08",
+            "startDateTime": "2021-01-08 18:00:00",
+            "endDateTime": "2021-01-08 20:00:00",
             "duration": 120,
             "fare": 25,
             "startTime": "18:00",
-            "endDate": "2021-01-08T14:30:00.000+0000",
-            "type": "FLIGHT",
-            "mediumId": null
+            "type": "FLIGHT"
           }
         ]
       },
@@ -139,41 +134,38 @@
           {
             "source": "A",
             "destination": "B",
-            "code": "4c65f863-f58a-45e8-a4c4-ec087b9a243a",
-            "startDate": "2021-01-08T06:30:00.000+0000",
-            "startDateTime": null,
+            "code": "268b059d-fff7-443d-a628-4b2c8499de57",
+            "startDate": "2021-01-08",
+            "startDateTime": "2021-01-08 12:00:00",
+            "endDateTime": "2021-01-08 14:00:00",
             "duration": 120,
             "fare": 10,
             "startTime": "12:00",
-            "endDate": "2021-01-08T08:30:00.000+0000",
-            "type": "FLIGHT",
-            "mediumId": null
+            "type": "FLIGHT"
           },
           {
             "source": "B",
             "destination": "C",
-            "code": "3e651e0d-0e03-4c8f-85c6-2e2a6a25e260",
-            "startDate": "2021-01-08T09:30:00.000+0000",
-            "startDateTime": null,
+            "code": "9f864d2c-0838-473d-be86-82748df2869b",
+            "startDate": "2021-01-08",
+            "startDateTime": "2021-01-08 15:00:00",
+            "endDateTime": "2021-01-08 17:00:00",
             "duration": 120,
             "fare": 20,
             "startTime": "15:00",
-            "endDate": "2021-01-08T11:30:00.000+0000",
-            "type": "FLIGHT",
-            "mediumId": null
+            "type": "FLIGHT"
           },
           {
             "source": "C",
             "destination": "D",
-            "code": "b1adfc92-46bd-490f-9d6a-de6ecb4c97b4",
-            "startDate": "2021-01-08T12:30:00.000+0000",
-            "startDateTime": null,
+            "code": "1ca55591-2664-4ff2-80e6-b94252f824ec",
+            "startDate": "2021-01-08",
+            "startDateTime": "2021-01-08 18:00:00",
+            "endDateTime": "2021-01-08 20:00:00",
             "duration": 120,
             "fare": 120,
             "startTime": "18:00",
-            "endDate": "2021-01-08T14:30:00.000+0000",
-            "type": "FLIGHT",
-            "mediumId": null
+            "type": "FLIGHT"
           }
         ]
       }
@@ -196,15 +188,14 @@
         {
           "source": "A",
           "destination": "D",
-          "code": "4361a2d3-786a-4839-938f-7bc5c588a822",
-          "startDate": "2021-01-08T12:30:00.000+0000",
-          "startDateTime": null,
+          "code": "6414a249-7f1f-46ce-8a1c-39384a21fa94",
+          "startDate": "2021-01-08",
+          "startDateTime": "2021-01-08 18:00:00",
+          "endDateTime": "2021-01-08 21:00:00",
           "duration": 180,
           "fare": 30,
           "startTime": "18:00",
-          "endDate": "2021-01-08T15:30:00.000+0000",
-          "type": "FLIGHT",
-          "mediumId": null
+          "type": "FLIGHT"
         }
       ]
     },
@@ -215,28 +206,26 @@
         {
           "source": "A",
           "destination": "B",
-          "code": "4c65f863-f58a-45e8-a4c4-ec087b9a243a",
-          "startDate": "2021-01-08T06:30:00.000+0000",
-          "startDateTime": null,
+          "code": "268b059d-fff7-443d-a628-4b2c8499de57",
+          "startDate": "2021-01-08",
+          "startDateTime": "2021-01-08 12:00:00",
+          "endDateTime": "2021-01-08 14:00:00",
           "duration": 120,
           "fare": 10,
           "startTime": "12:00",
-          "endDate": "2021-01-08T08:30:00.000+0000",
-          "type": "FLIGHT",
-          "mediumId": null
+          "type": "FLIGHT"
         },
         {
           "source": "B",
           "destination": "D",
-          "code": "73633865-cdcd-4e7f-be03-55d48df14e63",
-          "startDate": "2021-01-08T12:30:00.000+0000",
-          "startDateTime": null,
+          "code": "72f6a63e-f639-49c5-96fd-05c23a7a61e3",
+          "startDate": "2021-01-08",
+          "startDateTime": "2021-01-08 18:00:00",
+          "endDateTime": "2021-01-08 20:00:00",
           "duration": 120,
           "fare": 25,
           "startTime": "18:00",
-          "endDate": "2021-01-08T14:30:00.000+0000",
-          "type": "FLIGHT",
-          "mediumId": null
+          "type": "FLIGHT"
         }
       ]
     },
@@ -247,28 +236,26 @@
         {
           "source": "A",
           "destination": "B",
-          "code": "a86e30b2-afe8-4a66-902c-87e1a95f11d9",
-          "startDate": "2021-01-08T06:30:00.000+0000",
-          "startDateTime": null,
+          "code": "bd755b5f-f59a-4d71-8fe3-37d987aa3099",
+          "startDate": "2021-01-08",
+          "startDateTime": "2021-01-08 12:00:00",
+          "endDateTime": "2021-01-08 16:00:00",
           "duration": 240,
           "fare": 5,
           "startTime": "12:00",
-          "endDate": "2021-01-08T10:30:00.000+0000",
-          "type": "BUS",
-          "mediumId": null
+          "type": "BUS"
         },
         {
           "source": "B",
           "destination": "D",
-          "code": "73633865-cdcd-4e7f-be03-55d48df14e63",
-          "startDate": "2021-01-08T12:30:00.000+0000",
-          "startDateTime": null,
+          "code": "72f6a63e-f639-49c5-96fd-05c23a7a61e3",
+          "startDate": "2021-01-08",
+          "startDateTime": "2021-01-08 18:00:00",
+          "endDateTime": "2021-01-08 20:00:00",
           "duration": 120,
           "fare": 25,
           "startTime": "18:00",
-          "endDate": "2021-01-08T14:30:00.000+0000",
-          "type": "FLIGHT",
-          "mediumId": null
+          "type": "FLIGHT"
         }
       ]
     },
@@ -279,41 +266,38 @@
         {
           "source": "A",
           "destination": "B",
-          "code": "4c65f863-f58a-45e8-a4c4-ec087b9a243a",
-          "startDate": "2021-01-08T06:30:00.000+0000",
-          "startDateTime": null,
+          "code": "268b059d-fff7-443d-a628-4b2c8499de57",
+          "startDate": "2021-01-08",
+          "startDateTime": "2021-01-08 12:00:00",
+          "endDateTime": "2021-01-08 14:00:00",
           "duration": 120,
           "fare": 10,
           "startTime": "12:00",
-          "endDate": "2021-01-08T08:30:00.000+0000",
-          "type": "FLIGHT",
-          "mediumId": null
+          "type": "FLIGHT"
         },
         {
           "source": "B",
           "destination": "C",
-          "code": "3e651e0d-0e03-4c8f-85c6-2e2a6a25e260",
-          "startDate": "2021-01-08T09:30:00.000+0000",
-          "startDateTime": null,
+          "code": "9f864d2c-0838-473d-be86-82748df2869b",
+          "startDate": "2021-01-08",
+          "startDateTime": "2021-01-08 15:00:00",
+          "endDateTime": "2021-01-08 17:00:00",
           "duration": 120,
           "fare": 20,
           "startTime": "15:00",
-          "endDate": "2021-01-08T11:30:00.000+0000",
-          "type": "FLIGHT",
-          "mediumId": null
+          "type": "FLIGHT"
         },
         {
           "source": "C",
           "destination": "D",
-          "code": "b1adfc92-46bd-490f-9d6a-de6ecb4c97b4",
-          "startDate": "2021-01-08T12:30:00.000+0000",
-          "startDateTime": null,
+          "code": "1ca55591-2664-4ff2-80e6-b94252f824ec",
+          "startDate": "2021-01-08",
+          "startDateTime": "2021-01-08 18:00:00",
+          "endDateTime": "2021-01-08 20:00:00",
           "duration": 120,
           "fare": 120,
           "startTime": "18:00",
-          "endDate": "2021-01-08T14:30:00.000+0000",
-          "type": "FLIGHT",
-          "mediumId": null
+          "type": "FLIGHT"
         }
       ]
     }
