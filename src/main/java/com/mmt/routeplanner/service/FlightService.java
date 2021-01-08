@@ -1,5 +1,6 @@
 package com.mmt.routeplanner.service;
 
+import com.mmt.routeplanner.entity.BaseMedium;
 import com.mmt.routeplanner.entity.Flight;
 import com.mmt.routeplanner.repo.FlightRepository;
 import java.util.Date;
@@ -41,6 +42,11 @@ public class FlightService implements IMediumService{
       return Optional.of(flights.get(0));
     }
 
+  }
+
+  @Override
+  public List<? extends BaseMedium> findAll() {
+    return flightRepository.findAll();
   }
 
 }

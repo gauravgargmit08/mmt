@@ -1,5 +1,6 @@
 package com.mmt.routeplanner.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -36,11 +37,15 @@ public class BaseMedium {
   }
 
   private String destination;
+
+  @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone="IST")
   private Date flightDate;
+  @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss", timezone="IST")
   private Date startDateTime;
   private long duration;
   private BigDecimal fare;
   private String startTime;
+  @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss", timezone="IST")
   private Date endDate;
 
 

@@ -46,13 +46,13 @@ public class SearchRoute {
       Date endDate = RouteUtil.atEndOfDay(startDate);
       boolean routeFound = Boolean.TRUE;
       List<Medium> graphWalk = stringMediumGraphPath.getEdgeList();
-     log.info("graphWalk: {}",graphWalk.toString());
+      log.info("graphWalk: {}", graphWalk.toString());
 
       for (Medium medium : graphWalk) {
         String[] relProp = medium.getType().split(RouteUtil.DELIMETER);
         IMediumService mediumService =
             mediumServiceFactory.factory(relProp[2]);
-       log.info(String
+        log.info(String
             .format("Fetching Details From %s ----> %s ----- starteDateTime: %s, EndDateTime: %s",
                 relProp[0], relProp[1], nextDate, endDate));
 
@@ -62,8 +62,9 @@ public class SearchRoute {
 
         if (optionalBaseMedium.isPresent()) {
           BaseMedium baseMedium = optionalBaseMedium.get();
-          nextDate = baseMedium.getEndDate();
           // Assuming layover should not be more than 1 days for a customer.
+          //Calculate Start and End according to the previous transfer
+          nextDate = baseMedium.getEndDate();
           endDate = RouteUtil.addHours(nextDate, 24 * 60L);
           transfers.add(buildRoute(baseMedium, relProp[2]));
           totalFare = totalFare.add(baseMedium.getFare());
@@ -82,7 +83,7 @@ public class SearchRoute {
       }
     }
     //Sort them for the results
-    sort(routeSort,routesList);
+    sort(routeSort, routesList);
     searchResult.setRoutes(routesList);
     return searchResult;
   }
@@ -93,8 +94,7 @@ public class SearchRoute {
     if (RouteUtil.CHEAPEST.equalsIgnoreCase(routeSort)) {
       return mediumService.
           findCheapestBySrcAndByDestAndByDate(relProp[0], relProp[1], startDate, endDate);
-    }
-    else if (RouteUtil.SHORTEST.equalsIgnoreCase(routeSort)) {
+    } else if (RouteUtil.SHORTEST.equalsIgnoreCase(routeSort)) {
       return mediumService.
           findShortestBySourceAndDestinationAndByDate(relProp[0], relProp[1], startDate, endDate);
     } else {
@@ -107,8 +107,7 @@ public class SearchRoute {
     if (RouteUtil.CHEAPEST.equalsIgnoreCase(routeSort)) {
       routesList.sort(Comparator.comparing(Routes::getTotalFare));
 
-    }
-    else if (RouteUtil.SHORTEST.equalsIgnoreCase(routeSort)) {
+    } else if (RouteUtil.SHORTEST.equalsIgnoreCase(routeSort)) {
       routesList.sort(Comparator.comparing(Routes::getTotalDuration));
 
     } else {
@@ -127,7 +126,8 @@ public class SearchRoute {
     }
     return Transfer.builder().destination(baseMedium.getDestination())
         .endDateTime(baseMedium.getEndDate()).code(code)
-        .fare(baseMedium.getFare()).startDateTime(baseMedium.getStartDateTime()).startTime(baseMedium.getStartTime())
+        .fare(baseMedium.getFare()).startDateTime(baseMedium.getStartDateTime())
+        .startTime(baseMedium.getStartTime())
         .source(baseMedium.getSource()).type(type).startDate(baseMedium.getFlightDate()).
             startTime(baseMedium.getStartTime()).duration(baseMedium.getDuration()).build();
 

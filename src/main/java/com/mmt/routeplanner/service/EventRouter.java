@@ -23,7 +23,7 @@ public class EventRouter {
   @Autowired
   private BusesRepository busesRepository;
 
-  public void processEvent(FlightEvent flightEvent){
+  public Flight processEvent(FlightEvent flightEvent){
     Flight flight = new Flight();
     flight.setFlight_Id(flightEvent.getFlight_Id());
     flight.setSource(flightEvent.getFrom());
@@ -38,9 +38,10 @@ public class EventRouter {
     flightRepository.save(flight);
     log.info("Saving flight: {}" , flight.toString());
     GraphT.addRoute(flightEvent.getFrom(),flightEvent.getTo(), MediumType.MEDIUM_FLIGHT);
+    return flight;
   }
 
-  public void processEvent(BusEvent busEvent){
+  public Bus processEvent(BusEvent busEvent){
     Bus bus = new Bus();
     bus.setBus_Id(busEvent.getBus_id());
     bus.setSource(busEvent.getFrom());
@@ -54,6 +55,7 @@ public class EventRouter {
     busesRepository.save(bus);
     log.info("Saving bus: {}" , bus.toString());
     GraphT.addRoute(busEvent.getFrom(),busEvent.getTo(),MediumType.MEDIUM_BUS);
+    return bus;
   }
 
 }
