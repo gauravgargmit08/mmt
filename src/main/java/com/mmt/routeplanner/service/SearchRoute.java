@@ -25,9 +25,6 @@ import org.springframework.stereotype.Service;
 public class SearchRoute {
 
   @Autowired
-  private FlightService flightService;
-
-  @Autowired
   private MediumServiceFactory mediumServiceFactory;
 
 

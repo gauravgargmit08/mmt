@@ -74,9 +74,9 @@ public class DataGen {
 
     flight = new FlightEvent();
     flight.setFlight_Id(UUID.randomUUID().toString());
+    flight.setFrom("A");
     flight.setTo("D");
     flight.setDuration(180);
-    flight.setFrom("A");
     flight.setStartTime("18:00");
     flight.setFare(BigDecimal.valueOf(30L));
     flight.setDate(RouteUtil.getDateWithoutTimeUsingCalendar(new Date()));

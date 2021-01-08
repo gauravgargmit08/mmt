@@ -1,21 +1,12 @@
 package com.mmt.routeplanner.graph;
 
 import com.mmt.routeplanner.util.RouteUtil;
-import com.mxgraph.layout.mxCircleLayout;
-import com.mxgraph.layout.mxIGraphLayout;
-import com.mxgraph.util.mxCellRenderer;
-import java.awt.Color;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import javax.imageio.ImageIO;
 import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.KShortestPaths;
-import org.jgrapht.ext.JGraphXAdapter;
 import org.jgrapht.graph.DirectedWeightedMultigraph;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;

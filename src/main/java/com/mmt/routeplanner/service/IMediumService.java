@@ -1,7 +1,6 @@
 package com.mmt.routeplanner.service;
 
 import com.mmt.routeplanner.entity.BaseMedium;
-import com.mmt.routeplanner.entity.Flight;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
