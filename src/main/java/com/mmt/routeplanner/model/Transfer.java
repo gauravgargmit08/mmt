@@ -10,22 +10,22 @@ import lombok.Data;
 @Data
 @Builder
 public class Transfer {
-
-  @ApiModelProperty(name = "destination", value = "Destination to Search for",required = true,example = "A,B,C,Delhi,Hyderabad")
-  private String destination;
   @ApiModelProperty(name = "source", value = "source to Search for",required = true,example = "A,B,C,Delhi,Hyderabad")
   private String source;
+  @ApiModelProperty(name = "destination", value = "Destination to Search for",required = true,example = "A,B,C,Delhi,Hyderabad")
+  private String destination;
   @ApiModelProperty(name = "Code for the Medium ", value = "Flight Id or Bus Id",required = true,example = "Randon string")
   private String code;
   @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone="IST")
   private Date startDate;
   @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss", timezone="IST")
   private Date startDateTime;
+  @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss", timezone="IST")
+  private Date endDateTime;
   private long duration;
   private BigDecimal fare;
   private String startTime;
-  @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss", timezone="IST")
-  private Date endDate;
+
   private String type;
   private String mediumId;
 

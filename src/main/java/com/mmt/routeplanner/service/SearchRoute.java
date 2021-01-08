@@ -126,7 +126,7 @@ public class SearchRoute {
       code = ((Bus) baseMedium).getBus_Id();
     }
     return Transfer.builder().destination(baseMedium.getDestination())
-        .endDate(baseMedium.getEndDate()).code(code)
+        .endDateTime(baseMedium.getEndDate()).code(code)
         .fare(baseMedium.getFare()).startDateTime(baseMedium.getStartDateTime()).startTime(baseMedium.getStartTime())
         .source(baseMedium.getSource()).type(type).startDate(baseMedium.getFlightDate()).
             startTime(baseMedium.getStartTime()).duration(baseMedium.getDuration()).build();
