@@ -85,6 +85,7 @@ public class SearchRoute {
     //Sort them for the results
     sort(routeSort, routesList);
     searchResult.setRoutes(routesList);
+    searchResult.setMessage(routesList.isEmpty()?"No Route Found":"Success");
     return searchResult;
   }
 

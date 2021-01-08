@@ -20,4 +20,5 @@ public class SearchResult {
   @ApiModelProperty(name = "searchDate", value = "searchDate date to be in format of yyyy-MM-dd",required = true,example = "2021-01-08")
   private Date searchDate;
   private List<Routes> routes;
+  private String message;
 }

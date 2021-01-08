@@ -8,7 +8,9 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import javax.imageio.ImageIO;
 import org.jgrapht.GraphPath;
@@ -87,6 +89,15 @@ public class GraphT {
         );
     return pathInspector.getPaths(src, dest);
   }
+
+  public static Set<String> cities(){
+    if(CollectionUtils.isEmpty(graph.vertexSet()))
+      return Collections.emptySet();
+    return graph.vertexSet();
+  }
+
+
+
 
 
 }

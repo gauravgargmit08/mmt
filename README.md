@@ -315,6 +315,9 @@
 	mvn clean install
 	cd target
 ##         Run application
+    mkdir 
+    mkdir config
+    cp routeplanner/config .
     nohup java -jar routeplanner 1.0-SNAPSHOT.jar
 
 
