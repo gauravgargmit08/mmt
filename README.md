@@ -5,8 +5,8 @@
 - Assuming Layover between two flights or Bus should not be more than 1 days for customer convenience .
 - Program is searching top 50 routes over maximum of 10 hopes in the routes graph.
   - We can create dynamic config as per business and technical feasibility.
-- It uses **JGRAPHT** for storing routes of flight and buses. Medium of travel like Bus and Flight is used as releationship property.Database like Neo4J graph based is better candidate for this use case. 
-  Data modelling of Neo4j which have more 360 view of relationships between from and to ,flexibility and better performance. Due to time constraint using in-memory graph based library.
+- It uses **JGRAPHT** for storing routes of flight and buses. Medium of travel like Bus and Flight is used as releationship property. Database like Neo4J graph based is better candidate for this use case. 
+  - Data modelling of Neo4j which have more 360 view of relationships between from and to ,flexibility and better performance. Due to time constraint using in-memory graph based library.
 - Program is using ConcurrentHashMap to keep track of added route in routeGraph. 
   If already added with same type like Flight no need to add again.We can use distributed Cache like Redis or Aerospike for better performance and features.
 - Two kafka topic is being polled for the consumption of events mentioned in the file. These events will be sink into store and in parallel it will also create route graph.
@@ -17,16 +17,25 @@
 - It returns the List in ascending order of cheapest and shortest route.
 - Send Kafka Payload in same format only as validations are not in place in **MVP**.
 - JUNIT for main Business case is covered.
-### Graph Diagram
+
+
+## Implementation
+- Consumers are polling for bus and flights events. Event is therefore get sinked into fligt and bus dataset. The dataset stores this information for querying whenerever search is requested for a route.
+- In parllel we are creating a multi-edge graph to store the possible route from city A to city B. This is just to mark the route from A to B via Flight or Bus or any other medium is future. Below is graph visualization of the routes.
+- Thus on every search request we query our graph based db to check the possiblity for a route A to B direct or with transfers. Only when found move towards our other datasets for the availability of the differents flight and Buses on that day. This helps to mark the use journey from A to B.
+- With graph based routes we dont have to write complex and slow PL/SQL procedures and function to generate routes as simple SQL won't suffice the need.
+
+
+#### Graph Diagram
 ![Graph](Graph.png)
 
 
-#### Model 
+##### Model 
 ![ApiModel](APIModel.png)
 
 - Swagger API Link : http://127.0.0.1:5052/swagger-ui.html#
 
-#### Kafka Pipeline
+##### Kafka Pipeline
 - If Environment is not available we can disable in config/application.properties
   >kafka.enable = false 
 - Topics:
@@ -36,7 +45,7 @@
     > {"from":"B","to":"D","date":"2021-01-08","duration":120,"fare":25,"startTime":"18:00","flight_Id":"2d3bed04-21e7-42ce-99b8-b1038ed02bca"}
     
     
-##### Test Data
+###### Test Data
 - flight: From [A] -> [B]----dateTime: [Jan 08 12:00:00] --endTime: [Jan 08 14:00:00]----Fare:[10]---Duration:[120]
 - flight: From [B] -> [C]----dateTime: [Jan 08 15:00:00] --endTime: [Jan 08 17:00:00]----Fare:[20]---Duration:[120]
 - flight: From [C] -> [D]----dateTime: [Jan 08 18:00:00] --endTime: [Jan 08 20:00:00]----Fare:[120]---Duration:[120]
